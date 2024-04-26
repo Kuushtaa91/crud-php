@@ -8,30 +8,30 @@ Transacción de datos utilizando el método: POST
 */
 if(isset($_POST['modifica'])) {
 	$id = mysqli_real_escape_string($mysqli, $_POST['id']);
-	$tit = mysqli_real_escape_string($mysqli, $_POST['tit']);
-	$lan = mysqli_real_escape_string($mysqli, $_POST['lan']);
-	$ep = mysqli_real_escape_string($mysqli, $_POST['ep']);
-	$est = mysqli_real_escape_string($mysqli, $_POST['est']);
-	$continua = mysqli_real_escape_string($mysqli, $_POST['continua']);
+	$tit = mysqli_real_escape_string($mysqli, $_POST['Titulo']);
+	$lan = mysqli_real_escape_string($mysqli, $_POST['Lanzamiento']);
+	$ep = mysqli_real_escape_string($mysqli, $_POST['Episodio']);
+	$est = mysqli_real_escape_string($mysqli, $_POST['Estado']);
+	$continua = mysqli_real_escape_string($mysqli, $_POST['Continua']);
 
-	if(empty($tit) || empty($lan) || empty($ep) || empty($est) | empty($continua))	{
-		if(empty($tit)) {
+	if(empty($Titulo) || empty($Lanzamiento) || empty($Episodio) || empty($Estado) | empty($Continua))	{
+		if(empty($Titulo)) {
 			echo "<font color='red'>Campo nombre vacío.</font><br/>";
 		}
 
-		if(empty($lan)) {	
+		if(empty($Lanzamiento)) {	
 			echo "<font color='red'>Campo apellido vacío.</font><br/>";
 		}
 
-		if(empty($ep)) {
+		if(empty($Episodio)) {
 			echo "<font color='red'>Campo edad vacío.</font><br/>";
 		}
 
-		if(empty($est)) {
+		if(empty($Estado)) {
 			echo "<font color='red'>Campo edad vacío.</font><br/>";
 		}
 
-		if(empty($continua)) {
+		if(empty($Continua)) {
 			echo "<font color='red'>Campo edad vacío.</font><br/>";
 		}
 
@@ -39,13 +39,13 @@ if(isset($_POST['modifica'])) {
 	else 
 	{
 //Prepara una sentencia SQL para su ejecución. En este caso una modificación de un registro de la BD.				
-		$stmt = mysqli_prepare($mysqli, "UPDATE anime SET tit=?,lan=?,ep=?,est=?,continua=? WHERE id=?");
+		$stmt = mysqli_prepare($mysqli, "UPDATE anime SET Titulo=?,Lanzamiento=?,Episodio=?,Estado=?,Continua=? WHERE id=?");
 /*Enlaza variables como parámetros a una setencia preparada. 
 i: La variable correspondiente tiene tipo entero
 d: La variable correspondiente tiene tipo doble
 s:	La variable correspondiente tiene tipo cadena
 */				
-		mysqli_stmt_bind_param($stmt, "ssissi", $tit, $lan, $ep, $est, $continua, $id);
+		mysqli_stmt_bind_param($stmt, "ssissi", $Titulo, $Lanzamiento, $Episodio, $Estado, $Continua, $id);
 //Ejecuta una consulta preparada			
 		mysqli_stmt_execute($stmt);
 //Libera la memoria donde se almacenó el resultado
@@ -67,13 +67,13 @@ $id = mysqli_real_escape_string($mysqli, $id);
 
 
 //Prepara una sentencia SQL para su ejecución. En este caso selecciona el registro a modificar y lo muestra en el formulario.				
-$stmt = mysqli_prepare($mysqli, "SELECT tit, lan, ep, est, continua FROM anime WHERE id=?");
+$stmt = mysqli_prepare($mysqli, "SELECT Titulo, Lanzamiento, Episodio, Estado, Continua FROM anime WHERE id=?");
 //Enlaza variables como parámetros a una setencia preparada. 
 mysqli_stmt_bind_param($stmt, "i", $id);
 //Ejecuta una consulta preparada
 mysqli_stmt_execute($stmt);
 //Enlaza variables a una setencia preparada para el almacenamiento del resultado
-mysqli_stmt_bind_result($stmt, $tit, $lan, $ep, $est, $continua);
+mysqli_stmt_bind_result($stmt, $Titulo, $Lanzamiento, $Episodio, $Estado, $Continua);
 //Obtiene el resultado de una sentencia SQL preparada en las variables enlazadas
 mysqli_stmt_fetch($stmt);
 //Libera la memoria donde se almacenó el resultado		
@@ -114,28 +114,28 @@ mysqli_close($mysqli);
 Al hacer click en el botón Guardar, llama a esta misma página: edit.php-->
 	<form action="edit.php" method="post">
 		<div>
-			<label for="tit">Titulo</label>
-			<input type="text" name="tit" id="tit" value="<?php echo $tit;?>" required>
+			<label for="Titulo">Titulo</label>
+			<input type="text" name="Titulo" id="Titulo" value="<?php echo $Titulo;?>" required>
 		</div>
 
 		<div>
-			<label for="lan">Lanzamiento</label>
-			<input type="text" name="lan" id="lan" value="<?php echo $lan;?>" required>
+			<label for="Lanzamineto">Lanzamiento</label>
+			<input type="text" name="Lanzamiento" id="Lanzamiento" value="<?php echo $Lanzamiento;?>" required>
 		</div>
 
 		<div>
-			<label for="ep">Episodios</label>
-			<input type="number" name="ep" id="ep" value="<?php echo $ep;?>" required>
+			<label for="Episodio">Episodios</label>
+			<input type="number" name="Episodio" id="Episodio" value="<?php echo $Episodio;?>" required>
 		</div>
 
 		<div>
-			<label for="est">Estudio</label>
-			<input type="text" name="est" id="est" value="<?php echo $est;?>" required>
+			<label for="Estudio">Estudio</label>
+			<input type="text" name="Estudio" id="Estudio" value="<?php echo $Estudio;?>" required>
 		</div>
 
 		<div>
-			<label for="continua">Continua</label>
-			<input type="text" name="continua" id="continua" value="<?php echo $continua;?>" required>
+			<label for="Continua">Continua</label>
+			<input type="text" name="Continua" id="Continua" value="<?php echo $Continua;?>" required>
 		</div>
 
 		<div >

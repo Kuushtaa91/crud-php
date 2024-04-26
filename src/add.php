@@ -31,34 +31,34 @@ Transacción de datos utilizando el método: POST
 if(isset($_POST['inserta'])) 
 {
 //Obtiene los datos (name, surname y age) a partir del formulario de alta por el método POST (Se envía a través del body del HTTP Request. No aparece en la URL)
-	$tit = mysqli_real_escape_string($mysqli, $_POST['tit']);
-	$lan = mysqli_real_escape_string($mysqli, $_POST['lan']);
-	$ep = mysqli_real_escape_string($mysqli, $_POST['ep']);
-	$est = mysqli_real_escape_string($mysqli, $_POST['est']);
-	$continua = mysqli_real_escape_string($mysqli, $_POST['continua']);
+	$Titulo = mysqli_real_escape_string($mysqli, $_POST['Titulo']);
+	$Lanzamiento = mysqli_real_escape_string($mysqli, $_POST['Lanzamiento']);
+	$Episodio = mysqli_real_escape_string($mysqli, $_POST['Episodios']);
+	$Estudio = mysqli_real_escape_string($mysqli, $_POST['Estudio']);
+	$Continua = mysqli_real_escape_string($mysqli, $_POST['Continua']);
 /*Con mysqli_real_scape_string protege caracteres especiales en una cadena para ser usada en una sentencia SQL.
 Esta función es usada para crear una cadena SQL legal que se puede usar en una sentencia SQL. 
 Los caracteres codificados son NUL (ASCII 0), \n, \r, \, ', ", y Control-Z.*/
 
 //Comprueba si existen campos vacíos
-if(empty($tit) || empty($lan) || empty($ep) || empty($est) | empty($continua))	{
-	if(empty($tit)) {
+if(empty($Titulo) || empty($Lanzamiento) || empty($Episodio) || empty($Estudio) | empty($Continua))	{
+	if(empty($Titulo)) {
 		echo "<font color='red'>Campo nombre vacío.</font><br/>";
 	}
 
-	if(empty($lan)) {	
+	if(empty($Lanzamiento)) {	
 		echo "<font color='red'>Campo apellido vacío.</font><br/>";
 	}
 
-	if(empty($ep)) {
+	if(empty($Episodio)) {
 		echo "<font color='red'>Campo edad vacío.</font><br/>";
 	}
 
-	if(empty($est)) {
+	if(empty($Estudio)) {
 		echo "<font color='red'>Campo edad vacío.</font><br/>";
 	}
 
-	if(empty($continua)) {
+	if(empty($Continua)) {
 		echo "<font color='red'>Campo edad vacío.</font><br/>";
 	}
 
@@ -68,13 +68,13 @@ if(empty($tit) || empty($lan) || empty($ep) || empty($est) | empty($continua))	{
 	else 
 	{
 //Prepara una sentencia SQL para su ejecución. En este caso el alta de un registro de la BD.		
-		$stmt = mysqli_prepare($mysqli, "INSERT INTO anime (tit, lan, ep, est, continua) VALUES(?,?,?)");
+		$stmt = mysqli_prepare($mysqli, "INSERT INTO anime (Titulo, Lanzamiento, Episodio, Estudio, Continua) VALUES(?,?,?)");
 /*Enlaza variables como parámetros a una setencia preparada. 
 i: La variable correspondiente tiene tipo entero
 d: La variable correspondiente tiene tipo doble
 s:	La variable correspondiente tiene tipo cadena
 */		
-		mysqli_stmt_bind_param($stmt, "ssissi", $tit, $lan, $ep, $est, $continua, $id);
+		mysqli_stmt_bind_param($stmt, "ssissi", $Titulo, $Lanzamiento, $Episodio, $Estudio, $Continua, $id);
 //Ejecuta una consulta preparada		
 		mysqli_stmt_execute( $stmt);
 //Libera la memoria donde se almacenó el resultado		
