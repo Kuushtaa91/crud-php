@@ -69,11 +69,11 @@ $res["age"] = "23";
 //Genera la tabla de la página inicial
 	while($res = mysqli_fetch_array($result)) {
 		echo "<tr>\n";
-		echo "<td>".$res['tit']."</td>\n";
-		echo "<td>".$res['lan']."</td>\n";
-		echo "<td>".$res['ep']."</td>\n";
-		echo "<td>".$res["est"]."</td>\n";
-		echo "<td>".$res["continua"]."</td>\n";
+		echo "<td>".$res['Titulo']."</td>\n";
+		echo "<td>".$res['Lanzamiento']."</td>\n";
+		echo "<td>".$res['Episodio']."</td>\n";
+		echo "<td>".$res["Estudio"]."</td>\n";
+		echo "<td>".$res["Continua"]."</td>\n";
 		echo "<td>";
 //En la última columna se añader dos enlaces para editar y modificar el registro correspondiente. Se le pasa por el método GET el id del registro		
 		echo "<a href=\"edit.php?id=$res[id]\">Editar</a>\n";
