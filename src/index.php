@@ -44,11 +44,11 @@ $result = mysqli_query($mysqli, "SELECT * FROM anime ORDER BY id DESC");
 	<table border="1">
 	<thead>
 		<tr>
-			<th>tit</th>
-			<th>lan</th>
-			<th>ep</th>
-			<th>est</th>
-			<th>continua</th>
+			<th>Titulo</th>
+			<th>Lanzamiento</th>
+			<th>Episodio</th>
+			<th>Estudio</th>
+			<th>Continua</th>
 			<th>Acciones</th>
 		</tr>
 	</thead>

@@ -11,10 +11,10 @@ if(isset($_POST['modifica'])) {
 	$tit = mysqli_real_escape_string($mysqli, $_POST['Titulo']);
 	$lan = mysqli_real_escape_string($mysqli, $_POST['Lanzamiento']);
 	$ep = mysqli_real_escape_string($mysqli, $_POST['Episodio']);
-	$est = mysqli_real_escape_string($mysqli, $_POST['Estado']);
+	$est = mysqli_real_escape_string($mysqli, $_POST['Estudio']);
 	$continua = mysqli_real_escape_string($mysqli, $_POST['Continua']);
 
-	if(empty($Titulo) || empty($Lanzamiento) || empty($Episodio) || empty($Estado) | empty($Continua))	{
+	if(empty($Titulo) || empty($Lanzamiento) || empty($Episodio) || empty($Estudio) | empty($Continua))	{
 		if(empty($Titulo)) {
 			echo "<font color='red'>Campo nombre vacío.</font><br/>";
 		}
@@ -27,7 +27,7 @@ if(isset($_POST['modifica'])) {
 			echo "<font color='red'>Campo edad vacío.</font><br/>";
 		}
 
-		if(empty($Estado)) {
+		if(empty($Estudio)) {
 			echo "<font color='red'>Campo edad vacío.</font><br/>";
 		}
 
@@ -67,7 +67,7 @@ $id = mysqli_real_escape_string($mysqli, $id);
 
 
 //Prepara una sentencia SQL para su ejecución. En este caso selecciona el registro a modificar y lo muestra en el formulario.				
-$stmt = mysqli_prepare($mysqli, "SELECT Titulo, Lanzamiento, Episodio, Estado, Continua FROM anime WHERE id=?");
+$stmt = mysqli_prepare($mysqli, "SELECT Titulo, Lanzamiento, Episodio, Estudio, Continua FROM anime WHERE id=?");
 //Enlaza variables como parámetros a una setencia preparada. 
 mysqli_stmt_bind_param($stmt, "i", $id);
 //Ejecuta una consulta preparada
