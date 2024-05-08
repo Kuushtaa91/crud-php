@@ -68,13 +68,13 @@ if(empty($Titulo) || empty($Lanzamiento) || empty($Episodio) || empty($Estudio) 
 	else 
 	{
 //Prepara una sentencia SQL para su ejecución. En este caso el alta de un registro de la BD.		
-		$stmt = mysqli_prepare($mysqli, "INSERT INTO anime (Titulo, Lanzamiento, Episodio, Estudio, Continua) VALUES(?,?,?)");
+		$stmt = mysqli_prepare($mysqli, "INSERT INTO anime (Titulo, Lanzamiento, Episodio, Estudio, Continua) VALUES(?,?,?,?,?)");
 /*Enlaza variables como parámetros a una setencia preparada. 
 i: La variable correspondiente tiene tipo entero
 d: La variable correspondiente tiene tipo doble
 s:	La variable correspondiente tiene tipo cadena
 */		
-		mysqli_stmt_bind_param($stmt, "ssissi", $Titulo, $Lanzamiento, $Episodio, $Estudio, $Continua, $id);
+		mysqli_stmt_bind_param($stmt, "ssiss", $Titulo, $Lanzamiento, $Episodio, $Estudio, $Continua);
 //Ejecuta una consulta preparada		
 		mysqli_stmt_execute( $stmt);
 //Libera la memoria donde se almacenó el resultado		
