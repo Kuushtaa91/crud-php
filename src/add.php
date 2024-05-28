@@ -33,7 +33,7 @@ if(isset($_POST['inserta']))
 //Obtiene los datos (name, surname y age) a partir del formulario de alta por el método POST (Se envía a través del body del HTTP Request. No aparece en la URL)
 	$Titulo = mysqli_real_escape_string($mysqli, $_POST['Titulo']);
 	$Lanzamiento = mysqli_real_escape_string($mysqli, $_POST['Lanzamiento']);
-	$Episodio = mysqli_real_escape_string($mysqli, $_POST['Episodios']);
+	$Episodio = mysqli_real_escape_string($mysqli, $_POST['Episodio']);
 	$Estudio = mysqli_real_escape_string($mysqli, $_POST['Estudio']);
 	$Continua = mysqli_real_escape_string($mysqli, $_POST['Continua']);
 /*Con mysqli_real_scape_string protege caracteres especiales en una cadena para ser usada en una sentencia SQL.

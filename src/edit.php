@@ -8,44 +8,44 @@ Transacción de datos utilizando el método: POST
 */
 if(isset($_POST['modifica'])) {
 	$id = mysqli_real_escape_string($mysqli, $_POST['id']);
-	$tit = mysqli_real_escape_string($mysqli, $_POST['Titulo']);
-	$lan = mysqli_real_escape_string($mysqli, $_POST['Lanzamiento']);
-	$ep = mysqli_real_escape_string($mysqli, $_POST['Episodio']);
-	$est = mysqli_real_escape_string($mysqli, $_POST['Estudio']);
-	$continua = mysqli_real_escape_string($mysqli, $_POST['Continua']);
+	$Titulo = mysqli_real_escape_string($mysqli, $_POST['Titulo']);
+	$Lanzamiento = mysqli_real_escape_string($mysqli, $_POST['Lanzamiento']);
+	$Episodio = mysqli_real_escape_string($mysqli, $_POST['Episodio']);
+	$Estudio = mysqli_real_escape_string($mysqli, $_POST['Estudio']);
+	$Continua = mysqli_real_escape_string($mysqli, $_POST['Continua']);
 
 	if(empty($Titulo) || empty($Lanzamiento) || empty($Episodio) || empty($Estudio) | empty($Continua))	{
 		if(empty($Titulo)) {
-			echo "<font color='red'>Campo nombre vacío.</font><br/>";
+			echo "<font color='red'>Campo titulo vacío.</font><br/>";
 		}
 
 		if(empty($Lanzamiento)) {	
-			echo "<font color='red'>Campo apellido vacío.</font><br/>";
+			echo "<font color='red'>Campo lanzamiento vacío.</font><br/>";
 		}
 
 		if(empty($Episodio)) {
-			echo "<font color='red'>Campo edad vacío.</font><br/>";
+			echo "<font color='red'>Campo episodio vacío.</font><br/>";
 		}
 
 		if(empty($Estudio)) {
-			echo "<font color='red'>Campo edad vacío.</font><br/>";
+			echo "<font color='red'>Campo estudio vacío.</font><br/>";
 		}
 
 		if(empty($Continua)) {
-			echo "<font color='red'>Campo edad vacío.</font><br/>";
+			echo "<font color='red'>Campo continua vacío.</font><br/>";
 		}
 
 	} //fin si
 	else 
 	{
 //Prepara una sentencia SQL para su ejecución. En este caso una modificación de un registro de la BD.				
-		$stmt = mysqli_prepare($mysqli, "UPDATE anime SET Titulo=?,Lanzamiento=?,Episodio=?,Estado=?,Continua=? WHERE id=?");
+		$stmt = mysqli_prepare($mysqli, "UPDATE anime SET Titulo=?,Lanzamiento=?,Episodio=?,Estudio=?,Continua=? WHERE id=?");
 /*Enlaza variables como parámetros a una setencia preparada. 
 i: La variable correspondiente tiene tipo entero
 d: La variable correspondiente tiene tipo doble
 s:	La variable correspondiente tiene tipo cadena
 */				
-		mysqli_stmt_bind_param($stmt, "ssissi", $Titulo, $Lanzamiento, $Episodio, $Estado, $Continua, $id);
+		mysqli_stmt_bind_param($stmt, "ssissi", $Titulo, $Lanzamiento, $Episodio, $Estudio, $Continua, $id);
 //Ejecuta una consulta preparada			
 		mysqli_stmt_execute($stmt);
 //Libera la memoria donde se almacenó el resultado
@@ -73,7 +73,7 @@ mysqli_stmt_bind_param($stmt, "i", $id);
 //Ejecuta una consulta preparada
 mysqli_stmt_execute($stmt);
 //Enlaza variables a una setencia preparada para el almacenamiento del resultado
-mysqli_stmt_bind_result($stmt, $Titulo, $Lanzamiento, $Episodio, $Estado, $Continua);
+mysqli_stmt_bind_result($stmt, $Titulo, $Lanzamiento, $Episodio, $Estudio, $Continua);
 //Obtiene el resultado de una sentencia SQL preparada en las variables enlazadas
 mysqli_stmt_fetch($stmt);
 //Libera la memoria donde se almacenó el resultado		
@@ -120,7 +120,7 @@ Al hacer click en el botón Guardar, llama a esta misma página: edit.php-->
 
 		<div>
 			<label for="Lanzamineto">Lanzamiento</label>
-			<input type="text" name="Lanzamiento" id="Lanzamiento" value="<?php echo $Lanzamiento;?>" required>
+			<input type="date" name="Lanzamiento" id="Lanzamiento" value="<?php echo $Lanzamiento;?>" required>
 		</div>
 
 		<div>
