@@ -16,4 +16,4 @@ INSERT INTO anime (Titulo, Lanzamiento, Episodio, Estudio, Continua ) VALUES('FA
 INSERT INTO anime (Titulo, Lanzamiento, Episodio, Estudio, Continua ) VALUES('NANATSU NO TAIZAI', '2014-10-05', '104', 'A-1 PICTURES', 'FINALIZADO');
 INSERT INTO anime (Titulo, Lanzamiento, Episodio, Estudio, Continua ) VALUES('TOKYO GHOUL', '2014-07-04', '54', 'PIERROT', 'FINALIZADO');
 INSERT INTO anime (Titulo, Lanzamiento, Episodio, Estudio, Continua ) VALUES('TOKYO REVENGERS', '2021-04-10', '74', 'LIDEN FILMS', 'EN EMISION');
-INSERT INTO anime (Titulo, Lanzamiento, Episodio, Estudio, Continua ) VALUES('ORE DAKE LEVEL UP NA KEN', '2024-01-07', '12', 'A-1 PICTURES');
+INSERT INTO anime (Titulo, Lanzamiento, Episodio, Estudio, Continua ) VALUES('ORE DAKE LEVEL UP NA KEN', '2024-01-07', '12', 'A-1 PICTURES', 'EN EMISION');
