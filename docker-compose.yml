@@ -2,7 +2,7 @@ version: '3'
 
 services: 
   apache:
-    build: ./apache
+    image: kushta91/crud-php:1.0
     ports: 
       - 80:80
     environment: 
